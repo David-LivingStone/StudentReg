@@ -4,12 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Registered Students</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Registrations" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> &nbsp; Create New</a>
+        </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -72,11 +80,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDateTime)
             </td>
-            <td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Registrations" asp-action="Edit" asp-route-id="@item.Id"
+                        class="btn btn-secondary mx-2"><i class="bi-pencil-square"></i> Edit</a>
+                        <a asp-controller="Registrations" asp-action="Details" asp-route-id="@item.Id"
+                        class="btn btn-danger mx-2"><i class="bi bi-ticket-detailed"></i>Details</a>
+                        <a asp-controller="Registrations" asp-action="Delete" asp-route-id="@item.Id"
+                        class="btn btn-danger mx-2"><i class="bi bi-trash3"></i>Delete</a>
+                    </div>
+
+                </td>    
+            @*<td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            </td>*@
         </tr>
 }
     </tbody>
